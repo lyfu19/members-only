@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Members Only</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>💬 Members Only Club</h1>
+
+      <% if (user) { %>
+        <div class="topbar">
+          <p>Hello, <strong><%= user.first_name %></strong>!</p>
+          <div>
+            <a href="/new-message">📝 New Message</a>
+            <a href="/log-out">🚪 Logout</a>
+          </div>
+        </div>
+        
+        <% if (!user.is_member) { %>
+          <p style="margin-top: 0.5rem;">
+            <a href="/join" class="join-link">🔐 Join the Members-Only Club</a>
+          </p>
+        <% } else if (!user.is_admin) { %>
+          <a href="/admin">🛡️ Become Admin</a>
+        <% } else { %>
+          <p style="margin-top: 0.5rem; color: green;">🧙 You are an Admin</p>
+        <% } %>
+      <% } else { %>
+        <p><a href="/log-in">Login</a> or <a href="/sign-up">Sign up</a> to join the discussion!</p>
+      <% } %>
+
+      <hr />
+
+      <% if (messages.length === 0) { %>
+        <p>No messages yet. Be the first to post!</p>
+      <% } %>
+
+      <% messages.forEach(msg => { %>
+        <div class="message">
+          <h3><%= msg.title %></h3>
+          <p><%= msg.text %></p>
+
+          <% if (user?.is_member) { %>
+            <p class="meta">— <%= msg.first_name %> <%= msg.last_name %>, <%= new Date(msg.timestamp).toLocaleString() %></p>
+          <% } else { %>
+            <p class="meta"><em>Author hidden</em></p>
+          <% } %>
+
+          <% if (user?.is_admin) { %>
+            <form action="/delete-message/<%= msg.id %>" method="post" style="display: inline;" >
+              <button class="delete-btn" onclick="return confirm('Are you sure you want to delete this message?')">❌ Delete</button>
+            </form>
+          <% } %>
+        </div>
+      <% }); %>
+    </div>
+  </body>
+</html>

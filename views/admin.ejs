@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Become Admin</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="form-container">
+      <h1>🛡️ Admin Access</h1>
+
+      <% if (error) { %>
+        <div class="error-messages">
+          <p><%= error %></p>
+        </div>
+      <% } %>
+
+      <form action="/admin" method="post">
+        <label for="admin_code">Enter Admin Secret:</label>
+        <input type="text" id="admin_code" name="admin_code" required />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </body>
+</html>

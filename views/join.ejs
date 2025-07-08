@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Join the Club</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="form-container">
+      <h1>🔐 Join the Members-Only Club</h1>
+
+      <% if (error) { %>
+        <div class="error-messages">
+          <p><%= error %></p>
+        </div>
+      <% } %>
+
+      <form action="/join" method="POST">
+        <label for="secret_code">Enter the secret code:</label>
+        <input type="text" id="secret_code" name="secret_code" required />
+        <button type="submit">Join</button>
+      </form>
+    </div>
+  </body>
+</html>

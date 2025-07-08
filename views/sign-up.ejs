@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+
+  <body>
+    <div class="signup-container">
+      <h1>Register</h1>
+      <form action="/sign-up" method="post">
+        <label>
+          First Name:
+          <input type="text" name="first_name" value="<%= formData?.first_name || '' %>">
+        </label>
+
+        <label>
+          Last Name:
+          <input type="text" name="last_name" value="<%= formData?.last_name || '' %>">
+        </label>
+
+        <label>
+          Username (Email):
+          <input type="text" name="username" value="<%= formData?.username || '' %>">
+        </label>
+
+        <label>
+          Password:
+          <input type="password" name="password">
+        </label>
+
+        <label>
+          Confirm Password:
+          <input type="password" name="confirm_password">
+        </label>
+
+        <button type="submit">Sign Up</button>
+      </form>
+
+      <% if (errors && errors.length > 0) { %>
+        <ul class="error-messages">
+          <% errors.forEach(err => { %>
+            <li><%= err.msg %></li>
+          <% }) %>
+        </ul>
+      <% } %>
+    </div>
+  </body>
+</html>
