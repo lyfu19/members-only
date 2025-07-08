@@ -42,6 +42,7 @@ This is a simple full-stack Node.js application built with **Express**, **Postgr
 
    ```env
    DATABASE_URL=postgres://your_db_user:your_db_password@localhost:5432/your_db_name
+   SESSION_SECRET=your_session_secret
    MEMBER_SECRET=your_member_passcode
    ADMIN_SECRET=your_admin_passcode
    ```
@@ -81,6 +82,8 @@ This is a simple full-stack Node.js application built with **Express**, **Postgr
 ## Deployment
 
 This project is deployed on **Render**.
+
+🔗 **Live Demo:** [https://members-only-rxfm.onrender.com](https://members-only-rxfm.onrender.com)
 
 Make sure to set the following environment variables in your Render Dashboard:
 
